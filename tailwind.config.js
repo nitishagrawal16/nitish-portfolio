@@ -4,15 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: '#F5F0E8',
-        'cream-dark': '#EDE6D8',
-        amber: '#D4A853',
-        terracotta: '#C4694A',
-        charcoal: '#1A1A1A',
-        brown: '#8B7355',
+        bg: '#FFFFFF',
+        surface: '#F5F5F5',
+        'surface-2': '#EBEBEB',
+        ink: '#0D0D0D',
+        muted: '#888888',
+        accent: '#D4A853',
+        dark: '#0D0D0D',
+        border: '#E5E5E5',
       },
       fontFamily: {
-        display: ['"Playfair Display"', 'serif'],
+        display: ['"Space Grotesk"', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
       },
     },

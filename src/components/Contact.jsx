@@ -1,68 +1,121 @@
-import SectionWrapper from './shared/SectionWrapper'
-import BlobBackground from './shared/BlobBackground'
+import { motion, useReducedMotion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 import { person } from '../data/content'
 
-function ExternalLinkIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-      <polyline points="15 3 21 3 21 9" />
-      <line x1="10" y1="14" x2="21" y2="3" />
-    </svg>
-  )
-}
-
 export default function Contact() {
+  const shouldReduce = useReducedMotion()
+  const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true })
+
   return (
-    <SectionWrapper
+    <section
       id="contact"
-      className="relative py-28 md:py-36 px-6 overflow-hidden"
-      style={{ backgroundColor: 'var(--color-charcoal)' }}
+      ref={ref}
+      className="relative py-24 md:py-32 px-4 sm:px-6 overflow-x-hidden w-full"
+      style={{ backgroundColor: 'var(--color-surface)' }}
     >
-      <BlobBackground color="#C4694A" opacity={0.07} className="w-[500px] h-[500px] -top-16 -right-20" />
+      <div className="max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-[1fr_auto] gap-12 items-end">
+          <div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5 }}
+              className="font-display text-xs font-semibold uppercase tracking-[0.25em] mb-4"
+              style={{ color: 'var(--color-muted)' }}
+            >
+              Say Hi 👋
+            </motion.p>
 
-      <div className="relative z-10 max-w-2xl mx-auto text-center">
-        <p className="font-body text-xs uppercase tracking-[0.3em] mb-6" style={{ color: 'var(--color-amber)' }}>
-          Contact
-        </p>
+            {/* Giant "Creative" watermark text — like the reference */}
+            <div className="relative">
+              <motion.h2
+                initial={{ opacity: 0, y: shouldReduce ? 0 : 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.65 }}
+                className="font-display font-bold leading-none select-none"
+                style={{
+                  fontSize: 'clamp(3.5rem, 12vw, 9rem)',
+                  color: 'var(--color-ink)',
+                  letterSpacing: '-0.03em',
+                }}
+              >
+                Let's Talk
+              </motion.h2>
+            </div>
 
-        <h2
-          className="font-display font-bold leading-tight mb-6"
-          style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', color: 'var(--color-cream)' }}
+            <motion.p
+              initial={{ opacity: 0, y: shouldReduce ? 0 : 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.15 }}
+              className="font-body text-base mt-5 max-w-md"
+              style={{ color: 'var(--color-muted)' }}
+            >
+              Whether you're looking for a product leader, want to exchange ideas, or just connect — I'd love to hear from you.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: shouldReduce ? 0 : 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.22 }}
+              className="flex flex-wrap gap-4 mt-8"
+            >
+              <a
+                href={`mailto:${person.email}`}
+                className="px-7 py-3.5 rounded-full font-body font-semibold text-sm transition-opacity hover:opacity-80 truncate max-w-[260px] sm:max-w-none"
+                style={{ backgroundColor: 'var(--color-ink)', color: '#fff' }}
+              >
+                {person.email}
+              </a>
+              <a
+                href={person.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-7 py-3.5 rounded-full font-body font-semibold text-sm border-2 transition-opacity hover:opacity-70"
+                style={{ borderColor: 'var(--color-ink)', color: 'var(--color-ink)' }}
+              >
+                LinkedIn ↗
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Contact info block */}
+          <motion.div
+            initial={{ opacity: 0, y: shouldReduce ? 0 : 16 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.55, delay: 0.2 }}
+            className="flex flex-col gap-2 md:text-right"
+          >
+            <p className="font-display font-semibold text-sm" style={{ color: 'var(--color-ink)' }}>{person.location}</p>
+            <p className="font-body text-sm" style={{ color: 'var(--color-muted)' }}>{person.email}</p>
+            <p className="font-body text-xs mt-4" style={{ color: 'var(--color-muted)' }}>© {new Date().getFullYear()} Nitish Agrawal</p>
+          </motion.div>
+        </div>
+
+        {/* Bottom nav row */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex flex-wrap items-center justify-between gap-6 mt-16 pt-8"
+          style={{ borderTop: '1px solid var(--color-border)' }}
         >
-          Let's build something
-          <span className="italic" style={{ color: 'var(--color-amber)' }}> together.</span>
-        </h2>
-
-        <p className="font-body text-base mb-10 leading-relaxed" style={{ color: 'var(--color-cream)', opacity: 0.6 }}>
-          Whether you're looking for a product leader, want to discuss ideas, or just want to connect — my inbox is open.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-          <a
-            href={`mailto:${person.email}`}
-            className="px-7 py-3.5 rounded-full font-body font-semibold text-sm tracking-wide transition-all hover:opacity-90"
-            style={{ backgroundColor: 'var(--color-amber)', color: 'var(--color-charcoal)' }}
-          >
-            {person.email}
-          </a>
-          <a
-            href={person.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-7 py-3.5 rounded-full font-body font-semibold text-sm tracking-wide border-2 transition-all hover:opacity-80"
-            style={{ borderColor: 'var(--color-amber)', color: 'var(--color-amber)' }}
-          >
-            LinkedIn <ExternalLinkIcon />
-          </a>
-        </div>
-
-        <div className="border-t pt-8" style={{ borderColor: 'rgba(245,240,232,0.12)' }}>
-          <p className="font-body text-xs" style={{ color: 'var(--color-cream)', opacity: 0.35 }}>
-            © {new Date().getFullYear()} Nitish Agrawal · Montreal, QC
+          <p className="font-display font-bold text-lg" style={{ color: 'var(--color-ink)' }}>
+            NA<span style={{ color: 'var(--color-accent)' }}>.</span>
           </p>
-        </div>
+          <div className="flex flex-wrap gap-4 sm:gap-6">
+            {['About', 'Experience', 'Skills', 'Contact'].map((link) => (
+              <a
+                key={link}
+                href={`#${link.toLowerCase()}`}
+                className="font-body text-sm hover:opacity-60 transition-opacity"
+                style={{ color: 'var(--color-muted)' }}
+              >
+                {link}
+              </a>
+            ))}
+          </div>
+        </motion.div>
       </div>
-    </SectionWrapper>
+    </section>
   )
 }

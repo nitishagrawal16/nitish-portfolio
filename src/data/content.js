@@ -8,7 +8,7 @@ export const person = {
 
 export const about = {
   tagline: 'Product Manager with 10+ years building data-driven financial products.',
-  bio: 'I turn complex systems into products people trust. From financial surveillance platforms at Morgan Stanley to analytics tooling at BNP Paribas — I operate at the intersection of engineering, data, and business strategy. I ship with urgency, communicate with clarity, and lead with ownership.',
+  bio: 'I turn complex systems into products people trust. From financial surveillance platforms at Morgan Stanley to analytics tooling at BNP Paribas — I operate at the intersection of engineering, data, and business strategy. I ship with urgency, communicate with clarity, and lead with ownership. Beyond the day job, I build real products using Claude Code and the Claude API — bridging the gap between PM thinking and hands-on execution in the age of AI.',
 }
 
 export const stats = [
@@ -42,12 +42,17 @@ export const skillGroups = [
     category: 'Documentation & Quality',
     items: ['PRDs', 'BRDs', 'FRDs', 'UAT planning', 'Post-launch monitoring', 'Incident analysis'],
   },
+  {
+    category: 'AI & Emerging Technology',
+    items: ['Claude Code', 'Claude API', 'Prompt engineering', 'LLM integration', 'AI-assisted development', 'Agentic workflows', 'AI product specification'],
+  },
 ]
 
 export const tools = [
   'Jira', 'Confluence', 'PowerBI', 'Qlikview', 'Roadmunk',
   'Informatica', 'GitHub', 'SQL Developer', 'Actimize',
   'Moodys', 'Autosys', 'Visio', 'SharePoint', 'MS Office',
+  'Claude Code', 'Claude API', 'Cursor',
 ]
 
 export const experience = [
@@ -93,7 +98,59 @@ export const experience = [
     period: 'Jan 2016 — Apr 2016',
     bullets: [
       'Wrote functional test cases for new features and performed regression, functional, and black-box testing on the Nuance client portal.',
+      'Analyze new features and write functional test cases against their requirements.',
     ],
+  },
+]
+
+export const projects = [
+  {
+    id: '01',
+    title: 'FitWithNitish',
+    subtitle: 'Personal Fitness Platform',
+    description: 'A full-stack fitness web app designed and built entirely using Claude Code — workout tracking, nutrition logging, progress dashboards, and adaptive training plans. Proof that a PM who understands AI tooling can ship a real product end-to-end without a dev team.',
+    tags: ['React', 'Node.js', 'Tailwind CSS', 'Chart.js', 'Claude Code'],
+    status: 'In Progress',
+    gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+    accent: '#D4A853',
+    featured: true,
+    link: null,
+  },
+  {
+    id: '02',
+    title: 'ResumeAI',
+    subtitle: 'AI-Powered Resume Screener',
+    description: 'Paste a job description and a resume — get an instant match score, gap analysis, and rewrite suggestions powered by Claude AI. Cuts screening time for hiring managers by 80%.',
+    tags: ['Claude API', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+    status: 'Building',
+    gradient: 'linear-gradient(135deg, #0d1117 0%, #1a1f2e 50%, #0d2137 100%)',
+    accent: '#58a6ff',
+    featured: false,
+    link: null,
+  },
+  {
+    id: '03',
+    title: 'PM Copilot',
+    subtitle: 'AI Product Management Assistant',
+    description: 'An AI assistant that helps PMs write PRDs, generate user stories from rough ideas, run competitive analysis, and draft stakeholder updates — trained on PM best practices.',
+    tags: ['Claude API', 'React', 'Supabase', 'Vercel AI SDK'],
+    status: 'Coming Soon',
+    gradient: 'linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #1a0a2e 100%)',
+    accent: '#a855f7',
+    featured: false,
+    link: null,
+  },
+  {
+    id: '04',
+    title: 'DataLens',
+    subtitle: 'Natural Language SQL Generator',
+    description: 'Ask questions in plain English, get SQL queries back instantly. Built for non-technical stakeholders who need quick answers from databases without waiting on analysts.',
+    tags: ['Claude API', 'Python', 'FastAPI', 'React', 'PostgreSQL'],
+    status: 'Coming Soon',
+    gradient: 'linear-gradient(135deg, #0a1a0a 0%, #0d2b0d 50%, #1a3a1a 100%)',
+    accent: '#4ade80',
+    featured: false,
+    link: null,
   },
 ]
 
