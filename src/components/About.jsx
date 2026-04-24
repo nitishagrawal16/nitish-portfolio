@@ -43,11 +43,11 @@ export default function About() {
             </p>
 
             {/* Tags */}
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:flex md:flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap gap-2 mb-8">
               {highlightTags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1.5 rounded-full font-body text-xs font-medium border text-center"
+                  className="whitespace-nowrap px-3 py-1 rounded-full font-body text-xs font-medium border"
                   style={{ borderColor: 'var(--color-border)', color: 'var(--color-ink)', backgroundColor: 'var(--color-surface)' }}
                 >
                   {tag}
