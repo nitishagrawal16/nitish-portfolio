@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer'
 import { person, about, skillGroups } from '../data/content'
 import aboutImg from '../assets/img3.jpg'
 
-const highlightTags = ['Financial Services', 'SaaS', 'Agile / Scrum', 'Data Analytics', 'Stakeholder Mgmt', 'SQL', 'Product Roadmaps', 'UAT', 'Cross-functional Leadership', 'Claude Code', 'AI Product Development', 'Prompt Engineering']
+const highlightTags = ['Financial Services', 'SaaS', 'Agile / Scrum', 'Data Analytics', 'Stakeholder Mgmt', 'SQL', 'Product Roadmaps', 'Cross-functional Leadership', 'Claude Code', 'AI Product Development', 'Prompt Engineering']
 
 export default function About() {
   const shouldReduce = useReducedMotion()
