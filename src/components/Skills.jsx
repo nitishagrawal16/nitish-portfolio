@@ -102,7 +102,7 @@ export default function Skills() {
             initial={{ opacity: 0 }}
             animate={toolsInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6 }}
-            className="flex flex-wrap gap-3"
+            className="grid grid-cols-3 sm:grid-cols-4 md:flex md:flex-wrap gap-3"
           >
             {tools.map((tool, i) => (
               <motion.span
@@ -110,7 +110,7 @@ export default function Skills() {
                 initial={{ opacity: 0, scale: shouldReduce ? 1 : 0.9 }}
                 animate={toolsInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.3, delay: i * 0.04 }}
-                className="px-4 py-2 rounded-xl font-body text-sm font-medium"
+                className="px-3 py-2 rounded-xl font-body text-xs sm:text-sm font-medium text-center"
                 style={{
                   backgroundColor: 'var(--color-bg)',
                   border: '1px solid var(--color-border)',

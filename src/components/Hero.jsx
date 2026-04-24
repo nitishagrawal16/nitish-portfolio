@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { person } from '../data/content'
+import heroImg from '../assets/img2.jpg'
 
 const FONT_SEQUENCE = [
   { family: "'Bebas Neue', sans-serif",        spacing: '0.02em'  },
@@ -37,6 +38,14 @@ function MailIcon() {
   )
 }
 
+function LinkedInIcon() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+    </svg>
+  )
+}
+
 const container = { hidden: {}, visible: { transition: { staggerChildren: 0.11 } } }
 const item = {
   hidden: { opacity: 0, y: 28 },
@@ -56,7 +65,7 @@ export default function Hero() {
       {/* ── img2: full-height faded photo — right side, desktop only ── */}
       <div className="absolute inset-y-0 right-0 z-0 hidden md:block" style={{ width: '58%' }}>
         <img
-          src="/img2.jpg"
+          src={heroImg}
           alt=""
           aria-hidden="true"
           className="w-full h-full object-cover"
@@ -88,23 +97,18 @@ export default function Hero() {
         />
       </div>
 
-      {/* Mobile: slim top photo strip with heavy fade to white */}
-      <div className="md:hidden absolute top-16 inset-x-0 z-0" style={{ height: '260px' }}>
-        <img
-          src="/img2.jpg"
-          alt=""
-          aria-hidden="true"
-          className="w-full h-full object-cover"
-          style={{ objectPosition: '50% 12%' }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, #fff 88%)' }}
-        />
-      </div>
-
       {/* ── Main content ── */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 min-h-screen flex flex-col justify-center pt-24 pb-20 md:pt-32 md:pb-24">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 min-h-screen flex flex-col md:justify-center pt-20 pb-20 md:pt-32 md:pb-24">
+        {/* Mobile photo — visible portrait above text */}
+        <div className="md:hidden w-full mb-8 mt-4 rounded-2xl overflow-hidden" style={{ height: '280px' }}>
+          <img
+            src={heroImg}
+            alt="Nitish Agrawal"
+            className="w-full h-full object-cover"
+            style={{ objectPosition: '50% 15%' }}
+          />
+        </div>
+
         <motion.div
           variants={shouldReduce ? {} : container}
           initial="hidden"
@@ -152,7 +156,7 @@ export default function Hero() {
               className="font-display font-bold text-xs sm:text-sm uppercase tracking-[0.12em] sm:tracking-[0.2em]"
               style={{ color: 'var(--color-ink)' }}
             >
-              Senior Product Manager
+              Senior Product Manager / Business Analyst
             </span>
             <span className="hidden sm:inline" style={{ color: 'var(--color-border)', fontSize: '1.2rem' }}>·</span>
             <span
@@ -168,27 +172,20 @@ export default function Hero() {
             variants={shouldReduce ? {} : item}
             className="flex flex-wrap gap-2.5 mb-10"
           >
-            {[
-              { label: 'Morgan Stanley', accent: true },
-              { label: '10+ Years Experience', accent: false },
-              { label: 'AI-Native Builder', accent: false },
-              { label: 'Montreal, QC', accent: false },
-            ].map(({ label, accent }) => (
+            {['Morgan Stanley', '10+ Years Experience', 'AI-Native Builder', 'Montreal, QC'].map((label) => (
               <span
                 key={label}
                 className="flex items-center gap-2 px-4 py-2 rounded-full font-body text-xs font-semibold"
                 style={{
-                  backgroundColor: accent ? 'rgba(212,168,83,0.1)' : 'var(--color-surface)',
-                  border: `1px solid ${accent ? 'rgba(212,168,83,0.35)' : 'var(--color-border)'}`,
-                  color: accent ? 'var(--color-ink)' : 'var(--color-muted)',
+                  backgroundColor: 'rgba(212,168,83,0.1)',
+                  border: '1px solid rgba(212,168,83,0.35)',
+                  color: 'var(--color-ink)',
                 }}
               >
-                {accent && (
-                  <span
-                    className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: 'var(--color-accent)' }}
-                  />
-                )}
+                <span
+                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: 'var(--color-accent)' }}
+                />
                 {label}
               </span>
             ))}
@@ -197,11 +194,11 @@ export default function Hero() {
           {/* CTAs */}
           <motion.div
             variants={shouldReduce ? {} : item}
-            className="flex items-center gap-3 flex-wrap"
+            className="flex items-center gap-3"
           >
             <a
               href="#about"
-              className="px-7 py-3.5 rounded-full font-body font-semibold text-sm transition-all hover:opacity-80"
+              className="px-6 py-3.5 rounded-full font-body font-semibold text-sm transition-all hover:opacity-80 whitespace-nowrap"
               style={{ backgroundColor: 'var(--color-ink)', color: '#fff' }}
             >
               View My Work →
@@ -210,10 +207,11 @@ export default function Hero() {
               href={person.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-7 py-3.5 rounded-full font-body font-semibold text-sm border-2 transition-all hover:bg-[var(--color-surface)]"
-              style={{ borderColor: 'var(--color-ink)', color: 'var(--color-ink)' }}
+              className="w-12 h-12 flex items-center justify-center rounded-full border transition-all hover:scale-105"
+              style={{ borderColor: 'var(--color-border)', color: 'var(--color-ink)' }}
+              aria-label="LinkedIn profile"
             >
-              LinkedIn ↗
+              <LinkedInIcon />
             </a>
             <a
               href={`mailto:${person.email}`}
@@ -235,10 +233,9 @@ export default function Hero() {
         >
           <motion.div
             className="w-px"
-            style={{ height: '40px', backgroundColor: 'var(--color-border)' }}
+            style={{ height: '40px', backgroundColor: 'var(--color-border)', transformOrigin: 'top' }}
             animate={shouldReduce ? {} : { scaleY: [0, 1, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-            style={{ transformOrigin: 'top', backgroundColor: 'var(--color-border)' }}
           />
           <span
             className="font-body text-xs uppercase tracking-[0.2em]"

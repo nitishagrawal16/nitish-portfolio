@@ -61,19 +61,19 @@ export default function Contact() {
             >
               <a
                 href={`mailto:${person.email}`}
-                className="px-7 py-3.5 rounded-full font-body font-semibold text-sm transition-opacity hover:opacity-80 truncate max-w-[260px] sm:max-w-none"
+                className="px-7 py-3.5 rounded-full font-body font-semibold text-sm transition-opacity hover:opacity-80"
                 style={{ backgroundColor: 'var(--color-ink)', color: '#fff' }}
               >
-                {person.email}
+                Email Me
               </a>
               <a
                 href={person.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-7 py-3.5 rounded-full font-body font-semibold text-sm border-2 transition-opacity hover:opacity-70"
-                style={{ borderColor: 'var(--color-ink)', color: 'var(--color-ink)' }}
+                className="px-7 py-3.5 rounded-full font-body font-semibold text-sm transition-opacity hover:opacity-80"
+                style={{ backgroundColor: 'var(--color-ink)', color: '#fff' }}
               >
-                LinkedIn ↗
+                LinkedIn
               </a>
             </motion.div>
           </div>
