@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { person, about, skillGroups } from '../data/content'
+import aboutImg from '../assets/img3.jpg'
 
 const highlightTags = ['Financial Services', 'SaaS', 'Agile / Scrum', 'Data Analytics', 'Stakeholder Mgmt', 'SQL', 'Product Roadmaps', 'UAT', 'Cross-functional Leadership', 'Claude Code', 'AI Product Development', 'Prompt Engineering']
 
@@ -42,11 +43,11 @@ export default function About() {
             </p>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:flex md:flex-wrap gap-2 mb-8">
               {highlightTags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3.5 py-1.5 rounded-full font-body text-xs font-medium border"
+                  className="px-3 py-1.5 rounded-full font-body text-xs font-medium border text-center"
                   style={{ borderColor: 'var(--color-border)', color: 'var(--color-ink)', backgroundColor: 'var(--color-surface)' }}
                 >
                   {tag}
@@ -96,7 +97,7 @@ export default function About() {
             {/* Photo card — whiteboard strategy shot, perfect for a PM about section */}
             <div className="rounded-2xl overflow-hidden relative" style={{ height: '220px' }}>
               <img
-                src="/img3.jpg"
+                src={aboutImg}
                 alt="Nitish Agrawal presenting product strategy"
                 className="w-full h-full object-cover"
                 style={{ objectPosition: '35% 50%' }}
